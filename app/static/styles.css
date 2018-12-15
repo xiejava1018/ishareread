@@ -1,0 +1,186 @@
+/* define bootstrap 5 columns */
+.col-xs-1-5,
+.col-sm-1-5,
+.col-md-1-5,
+.col-lg-1-5 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-1-5 {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+.col-sm-1-5 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-1-5 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-1-5 {
+        width: 20%;
+        float: left;
+    }
+}
+
+/* 自定义了轮播图高度 */
+#ishareCarousel
+{
+   height: 410px;
+}
+#ishareCarousel #myCarousel
+{
+   height: 410px;
+}
+#ishareCarousel .item
+{
+   height: 410px;
+}
+#ishareCarousel img
+{
+   height: 410px;
+}
+
+
+div.index_newbook
+{
+	margin:0px 0px 0px 12px;
+	padding:0px 0px 0px 2px;
+	background:#FFFFFF;
+	width:200px;
+	height:300px;
+	display:inline;
+	float:left;
+}
+
+ul.contentdiv_ul
+{
+	padding: 8px 0px 0px 10px;
+	overflow: hidden;
+}
+
+ul.contentdiv_ul li {
+	float: left;
+    margin-right: 16px;
+    display: inline;
+    width: 145px;
+    height: 258px;
+    overflow: hidden;
+}
+
+ul.hotshare_ul
+{
+    padding: 8px 0px 0px 10px;
+    overflow: hidden;
+    height: 525px;
+}
+
+ul.hotshare_ul li{
+    margin-bottom: 5px;
+    width: 225px;
+    height: 101px;
+    overflow: hidden;
+}
+ul.hotshare_ul li img
+{
+    float: left;
+    width: 68px;
+    height: 96px;
+}
+ul.hotshare_ul li div {
+    float: left;
+    margin-left: 10px;
+    width:147px;
+    overflow: hidden;
+}
+
+.booklist_content {
+	margin: auto;
+	float: left;
+}
+.booklist_bookitem
+{
+    display: inline;
+    float: left;
+    margin: 0 70px 36px 0;
+    position: relative;
+    width: 306px;
+    margin-right: 38px;
+    overflow: hidden;
+}
+.booklist_bookitem .author_container
+{
+	color: #666;
+    height: 18px;
+}
+
+.booklist_bookitem .summery {
+	 position: absolute;
+	  right: 0;
+	  bottom: 0;
+	  width: 160px;
+	  max-height: 88px;
+	  color: #999;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+}
+.booklist_page{
+    height: 20px;
+}
+.booklist_page .pagination{
+    float: right;
+    margin: 0px;
+}
+.subbookclass_ul {
+    margin-bottom:0px;
+    padding-left: 0px;
+}
+.subbookclass_ul li{
+    display: inline;
+    white-space:nowrap;
+}
+
+.sidebar-module-inset {
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+ul.sameclassbook_ul
+{
+    padding: 8px 0px 0px 10px;
+    overflow: hidden;
+}
+
+ul.sameclassbook_ul li{
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+ul.sameclassbook_ul li img
+{
+    float: left;
+    width: 40px;
+    height: 55px;
+}
+ul.sameclassbook_ul li div {
+    float: left;
+    margin-left: 10px;
+    width:260px;
+    overflow: hidden;
+}
+
+.dashedline {
+  border-bottom: 1px dashed #ddd;
+  line-height: 100%;
+  clear: both;
+}

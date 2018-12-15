@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+  <!-- Main jumbotron for a primary marketing message or call to action
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+-->
+ <div class="row row-offcanvas row-offcanvas-right">
+ <div class="col-md-3">
+
+   <div class="list-group">
+        {% for bookClass in bookClassList %}
+            <a href="{{ url_for('book_blueprint.booklist',bookClassId=bookClass.bookClassId)}}" class="list-group-item text-center ">{{bookClass.bookClassName}}</a>
+        {% endfor %}
+   </div>
+ </div>
+   <div class="col-md-9">
+    <div id="ishareCarousel">
+   <!-- Carousel ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="http://www.ishareread.com/res/images/index_gg/0.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <!--
+              <h1>Example headline.</h1>
+              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="http://www.ishareread.com/res/images/index_gg/4.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+                 <!--
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="http://www.ishareread.com/res/images/index_gg/1.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <!--
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+    </div>
+   </div>
+ </div>
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="row featurette">
+  </div>
+    <div class="">
+      <!-- Three columns of text below the carousel -->
+       <div class="panel panel-default">
+           <div class="panel-body">
+              <div class="row">
+                {% for book in newBooks%}
+                <div class="col-md-1-5">
+                    <div class="index_newbook">
+                      <img src=" {{ book.bookImage }}" width="180" height="250" alt="{{ book.bookName }}" onerror="javascript:this.src='/res/images/nobook.jpg'">
+                        <p><a href="{{ url_for('book_blueprint.getbookdetail',bookId=book.bookId)}}">{{ book.bookName }}</a></p>
+                      <p>{{ book.bookAuthor|safe}}</p>
+                    </div>
+                </div><!-- /.col-lg-4 -->
+                {% endfor %}
+              </div><!-- /.row -->
+           </div>
+       </div>
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    精品书籍
+                </h3>
+            </div>
+           <div class="panel-body">
+               <ul class="contentdiv_ul">
+                {% for goodbook in goodBooks%}
+                 <li>
+                     <a href="{{ url_for('book_blueprint.getbookdetail',bookId=goodbook.bookId)}}">
+                           <img width="140px" height="196px" src="{{ goodbook.bookImage }}" alt="{{ goodbook.bookName }}" onerror="javascript:this.src='/res/images/nobook.jpg'">
+                     </a>
+                     <h5><a href="{{ url_for('book_blueprint.getbookdetail',bookId=goodbook.bookId)}}">{{ goodbook.bookName }}</a></h5>
+                     <p>{{ goodbook.bookAuthor|safe}}</p>
+                 </li>
+                 {% endfor %}
+	            </ul>
+           </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    乐享榜
+                </h3>
+            </div>
+           <div class="panel-body">
+                 <ul class="hotshare_ul">
+                     {% for sharehotbook in shareHotBooks%}
+                    <li >
+                        <img src="{{ sharehotbook.bookImage }}" alt="{{ sharehotbook.bookName }}" onerror="javascript:this.src='/res/images/nobook.jpg'">
+                        <div ><h5><a href="{{ url_for('book_blueprint.getbookdetail',bookId=sharehotbook.bookId)}}">{{ sharehotbook.bookName }}</a></h5>
+                        {{ sharehotbook.bookShareEbookcount }}人在分享电子书<br>
+                        {{ sharehotbook.bookShareBookcount }}人在分享纸质书</div>
+                    </li>
+                     {% endfor %}
+                </ul>
+           </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+{% block page_content %}
+<div class="row row-offcanvas row-offcanvas-right">
+ <div class="col-md-3">
+
+   <div class="list-group">
+        {% for bookClass in bookClassList %}
+            <a href="{{ url_for('book_blueprint.booklist',bookClassId=bookClass.bookClassId)}}" class="list-group-item text-center {% if bookClass.bookClassId==bookClassId%}active{% endif%}">{{bookClass.bookClassName}}</a>
+        {% endfor %}
+   </div>
+  </div>
+   <div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <ul class="subbookclass_ul">
+                {% for subBookClass in subBookClassList %}
+                    <li><a class="btn-default btn-sm {%if subBookClass.bookClassId==subBookClassId %}active{%endif%}" href="{{ url_for('book_blueprint.booklist',bookClassId=subBookClass.bookParentClassId,subBookClassId=subBookClass.bookClassId)}}">{{subBookClass.bookClassName}}</a></li>
+                {% endfor%}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+           <ul class="booklist_content">
+             {% for book in bookList%}
+                <li class="booklist_bookitem" >
+                    <a href="{{ url_for('book_blueprint.getbookdetail',bookId=book.bookId)}}">
+                         <img width="140px" height="209px" src="{{ book.bookImage }}" alt="{{ book.bookName }}"  class="pull-left" onerror="javascript:this.src='/res/images/nobook.jpg'">
+                         <h4>{{ book.bookName }}</h4>
+                   </a>
+                   <div class="author_container">
+                      {{ book.bookAuthor|safe }}
+                   </div>
+                   <div class="summery">
+                      <p>
+                        {{ book.bookContentDesc }}
+                      </p>
+                   </div>
+
+                </li>
+             {% endfor %}
+           </ul>
+       </div>
+
+    </div>
+    <div class="booklist_page">
+        {% if pagination %}
+        <div class="pagination">
+            {{ macros.pagination_widget(pagination, 'book_blueprint.booklist',bookClassId=bookClassId,subBookClassId=subBookClassId) }}
+        </div>
+        {% endif %}
+    </div>
+   </div>
+ </div>
+{% endblock %}

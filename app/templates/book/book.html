@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+<div class="row row-offcanvas row-offcanvas-right">
+ <div class="col-md-8">
+     <div class="panel panel-default">
+       <div class="panel-heading">
+           <div class="panel-title">
+               当前位置：
+               {% if parentBookClass %}
+               <a href="{{ url_for('book_blueprint.booklist',bookClassId=parentBookClass.bookClassId)}}">{{parentBookClass.bookClassName}}</a>
+               {% endif %}
+               {% if bookClass %}
+               >><a href="{{ url_for('book_blueprint.booklist',bookClassId=parentBookClass.bookClassId,subBookClassId=bookClass.bookClassId)}}">{{bookClass.bookClassName}}</a>
+               {% endif %}
+           </div>
+       </div>
+       <div class="panel-body">
+           <div class="row">
+               <div class="col-md-4">
+                   <img width="186px" height="250px" src="{{book.bookImage}}" alt="{{book.bookName}}" class="img-thumbnail">
+               </div>
+               <div class="col-md-8">
+                   <h4>{{book.bookName}}</h4>
+                   <p>作者：{{book.bookAuthor}}</p>
+                   <p>出版社：{{book.bookPress}}</p>
+                   <p>出版日期：{{book.bookPressDate}}</p>
+                   <p>ISBN：{{book.bookIsbn}}</p>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-md-12">
+                   <h4>内容简介</h4>
+                   <p>
+                       {{book.bookContentDesc|safe}}
+                   </p>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-md-12">
+                   <h4>作者简介</h4>
+                   <p>
+                       {{book.bookAuthorDesc|safe}}
+                   </p>
+               </div>
+           </div>
+       </div>
+    </div>
+  </div>
+   <div class="col-md-4">
+     <div class="panel panel-default">
+         <div class="panel-heading">
+           <div class="panel-title">
+               下载与推送
+           </div>
+         </div>
+         <div class="panel-body">
+         </div>
+     </div>
+      <div class="panel panel-default">
+         <div class="panel-heading">
+           <div class="panel-title">
+               同类好书
+           </div>
+         </div>
+         <div class="panel-body">
+             <ul class="sameclassbook_ul">
+                {% for book in sameTypeBooks %}
+                 <li>
+                     <img width="40px" height="55px" src="{{book.bookImage}}" alt="{{book.bookName}}">
+                     <div>
+                         <p><a href="{{ url_for('book_blueprint.getbookdetail',bookId=book.bookId)}}">{{book.bookName}}</a></p>
+                         <p>{{book.bookAuthor}}</p>
+                     </div>
+                     <p class="dashedline"></p>
+                 </li>
+                {% endfor %}
+             </ul>
+         </div>
+     </div>
+   </div>
+ </div>
+{% endblock %}

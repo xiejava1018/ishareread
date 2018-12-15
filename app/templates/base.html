@@ -1,0 +1,100 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}爱分享读书{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<link href="https://v3.bootcss.com/examples/carousel/carousel.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ url_for('main.index') }}">IshareRead</a>
+</div>
+ <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('main.index') }}">首页</a></li>
+                <li><a href="{{ url_for('book_blueprint.booklist') }}">分类</a></li>
+                <li><a href="{{ url_for('main.index') }}">排行</a></li>
+            </ul>
+            <!--
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="">
+                        用户名 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="#">修改邮箱</a></li>
+                        <li><a href="#">登出</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Log In</a></li>
+            </ul>
+            -->
+            <form class="navbar-form navbar-right">
+                <div class="input-group">
+                    <div class="form-group">
+                      <input type="text" placeholder="书名" class="form-control">
+                    </div>
+                    <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">搜索</button>
+                    </span>
+                </div>
+            </form>
+   </div>
+  </div>
+</nav>
+<div class="navbar navbar-inverse ">
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+{% block page_content %} {% endblock %}
+
+    <hr>
+    <footer>
+        <div class="container">
+            <div class="row"><div class="col-md-12"></div></div>
+            <div class="row">
+                <div class="col-md-6 ">
+                 <p>    关于我们	在线客服	帮助与支持	联系我们	免责声明   </p>
+                 <p>&copy; 2014-2019 爱分享读书 网站备案号 : ( 湘ICP备13012731号-3 )</p>
+
+                    <p> 邮箱:<a href="mailto:master@ishareread.com‍">master@ishareread.com</a> | QQ群:415319375 |微博:@爱分享读书</p>
+
+                <p>推荐浏览器：Internet Explorer 8及以上 </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="pull-right">
+                      <img width="120px" height="120px" src="http://image.ishareread.com/qrcode_for_gh_70fb5d85a824_258.jpg"  alt="微信公众号" >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
